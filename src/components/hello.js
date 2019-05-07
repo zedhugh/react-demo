@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { hot } from 'react-hot-loader';
 
 class Hello extends React.Component {
   constructor(props) {
@@ -14,13 +12,18 @@ class Hello extends React.Component {
       fetch("http://zedhugh.me/data.json")
         .then(r => r.json())
         .then((d) => {
-          const ul = document.createElement('ul');
+          const table = document.createElement('table');
           Object.keys(d).forEach((k) => {
-            const li = document.createElement('li');
-            li.textContent = `${k}: ${d[k]}`;
-            ul.appendChild(li);
+            const tr = document.createElement('tr');
+            const td1 = document.createElement('td');
+            const td2 = document.createElement('td');
+            td1.textContent = k;
+            td2.textContent = d[k];
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            table.appendChild(tr);
           });
-          node.appendChild(ul);
+          node.appendChild(table);
         });
     }, 1000);
   }
@@ -34,4 +37,4 @@ class Hello extends React.Component {
   }
 }
 
-export default hot(module)(Hello);
+export default Hello;

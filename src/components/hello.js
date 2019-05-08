@@ -1,4 +1,6 @@
 import React from 'react';
+import styleA from './a.css';
+import styleB from './b.css';
 
 class Hello extends React.Component {
   constructor(props) {
@@ -13,6 +15,7 @@ class Hello extends React.Component {
         .then(r => r.json())
         .then((d) => {
           const table = document.createElement('table');
+          table.className = styleB.italic;
           Object.keys(d).forEach((k) => {
             const tr = document.createElement('tr');
             const td1 = document.createElement('td');
@@ -31,7 +34,7 @@ class Hello extends React.Component {
   render() {
     return (
       <div ref={this.myRef}>
-        Good
+        <span className={`${styleB.bold} ${styleA.italic}`}>Good</span>
       </div>
     );
   }
